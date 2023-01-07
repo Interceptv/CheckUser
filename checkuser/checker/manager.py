@@ -26,7 +26,7 @@ class CheckerUserManager:
             if not output or output == 'never':
                 return None
 
-            return datetime.strptime(output, '%b %d, %Y').strftime('%Y-%m-%d-')
+            return datetime.strptime(output, '%b %d, %Y').strftime("%Y-%m-%d-")
 
         except subprocess.CalledProcessError as e:
             return None
