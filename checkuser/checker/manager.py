@@ -26,7 +26,7 @@ class CheckerUserManager:
             if not output or output == 'never':
                 return None
 
-            return datetime.strptime(output, '%B %d, %Y').strftime("%Y-%m-%d")
+            return datetime.strptime(output, '%b %d, %Y').strftime("%Y-%m-%d"+"-")
 
         except subprocess.CalledProcessError as e:
             return None
@@ -35,7 +35,7 @@ class CheckerUserManager:
         if not isinstance(date, str) or date.lower() == 'never':
             return -1
 
-        return (datetime.strptime(date, '%Y-%m-%d') - datetime.now()).days
+        return (datetime.strptime(date, '%Y-%m-%d'+"-") - datetime.now()).days
 
     def get_connections(self) -> int:
         count = 0
