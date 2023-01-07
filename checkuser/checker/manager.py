@@ -35,7 +35,7 @@ class CheckerUserManager:
         if not isinstance(date, str) or date.lower() == 'never':
             return -1
 
-        return (datetime.strptime(date, '%d/%m/%Y') - datetime.now()).days
+        return (datetime.strptime(date, '%d-%m-%Y-') - datetime.now()).days
 
     def get_connections(self) -> int:
         count = 0
