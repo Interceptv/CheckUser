@@ -81,8 +81,8 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
 
         return {
             'USER_ID': username,
-            'DEVICE': count,
-            'limit_connection': 'BCC35DC71DE5AE7BD46F8F421A7C414E',
+            'DEVICE': 'BCC35DC71DE5AE7BD46F8F421A7C414E',
+            'limit_connection': limit_connection,
             'expiration_date': expiration_date,
             'expiry': expiration_days,
   }
