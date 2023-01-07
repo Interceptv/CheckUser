@@ -35,7 +35,7 @@ class CheckerUserManager:
         if not isinstance(date, str) or date.lower() == 'never':
             return -1
 
-        return (datetime.strptime(date, '%Y-%m-%d-') - datetime.now()).days
+        return (datetime.strptime(date, '%d/%m/%Y') - datetime.now()).days
 
     def get_connections(self) -> int:
         count = 0
@@ -84,7 +84,7 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
             'USER_ID':username,
             'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
             'is_active':'false',
-            'expiration_date':"expirate_date",
+            'expiration_date':expirate_date,
             'expiry':expiration_days,
   }
         
