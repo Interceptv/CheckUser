@@ -73,18 +73,14 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
     try:
         checker = CheckerUserManager(username)
 
-        count = checker.get_connections()
-        expirate_date = checker.get_expiration_date()
         expiration_date = checker.get_expiration_date()
         expiration_days = checker.get_expiration_days(expiration_date)
-        limit_connection = checker.get_limiter_connection()
-        time_online = checker.get_time_online()
-
+      
         return {
             'USER_ID':username,
             'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
             'is_active':'false',
-            'expiration_date':expirate_date,
+            'expiration_date':expiration_date,
             'expiry':expiration_days,
   }
         
