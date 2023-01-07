@@ -26,7 +26,7 @@ class CheckerUserManager:
             if not output or output == 'never':
                 return None
 
-            return datetime.strptime(output, '%b %d, %Y').strftime('%Y-%m-%d-')
+            return datetime.strptime(output, '%b %d, %Y').strftime('%d/%m/%Y')
 
         except subprocess.CalledProcessError as e:
             return None
@@ -83,7 +83,7 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
             'USER_ID': username,
             'DEVICE': 'BCC35DC71DE5AE7BD46F8F421A7C414E',
             'limit_connection': limit_connection,
-            'expiration_date': '2023-01-31-',
+            'expiration_date': expiration_date,
             'expiry': expiration_days,
   }
         
