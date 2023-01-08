@@ -40,7 +40,7 @@ function install_checkuser() {
     echo ""
     echo "CheckUser instalado com sucesso."
     echo "Execute: checkuser --help"
-    echo "URL: http://"$(curl -s icanhazip.com)":"$port "/check/"
+    echo "URL: http://"$(curl -s icanhazip.com)":"$port+"/check/"
     read
 }
 
