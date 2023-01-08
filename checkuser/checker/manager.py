@@ -74,7 +74,8 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
         checker = CheckerUserManager(username)
 
         count = checker.get_connections()
-        expiration_date = checker.replace("/", "-").get_expiration_date()
+        gty = expiration_date.replace("/", "-")
+        expiration_date = checker.get_expiration_date(gty)
         expiration_days = checker.get_expiration_days(expiration_date)
         limit_connection = checker.get_limiter_connection()
         time_online = checker.get_time_online()
