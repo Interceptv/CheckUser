@@ -86,7 +86,6 @@ class WorkerThread(threading.Thread):
 
                 client.send(response_data.encode('utf-8'))
                 client.close()
-           
 
             except Exception as e:
                 pass
