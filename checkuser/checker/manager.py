@@ -80,12 +80,12 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
         time_online = checker.get_time_online()
         
         gtx = expiration_date.replace("/", "-")
-
+got = gtx.replace("'", '"')
         return {
             'USER_ID':username,
             'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
             'is_active':'false',
-            'expiration_date': gtx,
+            'expiration_date': got,
             'expiry': '19 dias'
   }
         
