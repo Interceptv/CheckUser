@@ -21,8 +21,7 @@ base_cli.add_argument(
 
 def args_handler(args):
     if args.check:
-        json_string = json.dump(check_user)
-        print(type(json_string))
+        print(json.dumps(check_user(args.check), indent=4))
 
     if args.kill:
         kill_user(args.kill)
