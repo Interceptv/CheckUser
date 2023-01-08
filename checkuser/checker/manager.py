@@ -81,7 +81,7 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
         
         gtx = expiration_date.replace("/", "-")
         
-        return {'USER_ID':username,'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E','is_active':'false','expiration_date':'2022-12-31-','expiry':19,}
+        return {'USER_ID':username,'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E','is_active':'false','expiration_date':"2023-12-31-",'expiry':'19'}
         
 
     except Exception as e:
