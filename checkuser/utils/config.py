@@ -78,7 +78,7 @@ class Config:
         config = config or self.config
 
         with open(self.path_config, 'w') as f:
-            f.write(json.dumps(config))
+            f.write(json.dumps(config, indent=0))
 
     @staticmethod
     def remove_config() -> None:
