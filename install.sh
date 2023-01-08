@@ -36,7 +36,7 @@ function install_checkuser() {
     checkuser --config-port $port --create-service
     service check_user start
     
-    figlet "GL CHECK" | lolcat
+    figlet "SCANNY CHECK" | lolcat
     echo ""
     echo "CheckUser instalado com sucesso."
     echo "Execute: checkuser --help"
@@ -82,7 +82,7 @@ function uninstall_checkuser() {
 
 function console_menu() {
     clear
-    figlet "GL CHECK" | lolcat
+    figlet "SCANNY CHECK" | lolcat
     echo -e "╔══════════════•⊱✦⊰•══════════════╗" | lolcat
     echo ""
     echo "[01] - Instalar CheckUser"
