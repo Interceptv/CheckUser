@@ -81,8 +81,7 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
         limit_connection = checker.get_limiter_connection()
         time_online = checker.get_time_online()
         gtxs = gtx.replace("/", "-")
-        return
-         body={
+        return {
             'USER_ID':username,
             'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
             'is_active':'false',
