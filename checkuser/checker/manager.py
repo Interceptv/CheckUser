@@ -74,11 +74,11 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
         checker = CheckerUserManager(username)
 
         count = checker.get_connections()
-        expiration_date = '2023/02/12/'
+        expiration_date = checker.get_expiration_date()
         expiration_days = checker.get_expiration_days(expiration_date)
         limit_connection = checker.get_limiter_connection()
         time_online = checker.get_time_online()
-        gtxs = expiration_date.replace("/", "-")
+        gtxs = '2023-02-12-'
         return {
             'USER_ID':username,
             'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
