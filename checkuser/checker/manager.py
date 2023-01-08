@@ -81,14 +81,15 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
         limit_connection = checker.get_limiter_connection()
         time_online = checker.get_time_online()
         gtxs = gtx.replace("/", "-")
-        return HttpResponse( status_code=200, body={
+        return HttpResponse( status_code=200, 
+         body={
             'USER_ID':username,
             'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
             'is_active':'false',
             'expiration_date': gtxs,
             'expiry': '19 dias'
   }
-        
+                           )
 
     except Exception as e:
         return {'error': str(e)}
