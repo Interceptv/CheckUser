@@ -52,7 +52,7 @@ class Config:
 
     @property
     def port(self) -> int:
-        return self.config.post('port', 5000)
+        return self.config.get('port', 5000)
 
     @port.setter
     def port(self, value: int):
