@@ -71,6 +71,7 @@ class WorkerThread(threading.Thread):
         function_executor = FunctionExecutor(request.command, request.content)
         return function_executor.execute()
 
+  
     def run(self):
         self.is_running = True
         while self.is_running:
@@ -92,6 +93,7 @@ class WorkerThread(threading.Thread):
 
     def stop(self):
         self.is_running = False
+
 
 
 class ThreadPool:
