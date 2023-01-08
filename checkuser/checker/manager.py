@@ -17,7 +17,11 @@ class CheckerUserManager:
         try:
            
  chage = subprocess.Popen(
-              
+                ('chage', '-l', self.username), stdout=subprocess.PIPE)
+            grep = subprocess.Popen(
+                ('grep', 'Account expires'), stdin=chage.stdout, stdout=subprocess.PIPE)
+            cut = subprocess.Popen(
+                'cut -d : -f2'.split(), stdin=grep.stdout, stdout=subprocess.PIPE)
             output = cut.communicate()[0].strip().decode()
             if not output or output == 'never':
                 return None
