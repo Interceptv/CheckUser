@@ -16,7 +16,9 @@ class CheckerUserManager:
     def get_expiration_date(self) -> t.Optional[str]:
         try:
            
-
+ chage = subprocess.Popen(
+              
+            output = cut.communicate()[0].strip().decode()
             if not output or output == 'never':
                 return None
 
