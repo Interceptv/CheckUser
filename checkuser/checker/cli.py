@@ -19,7 +19,7 @@ base_cli.add_argument(
 )
 
 
-def args_handler():
+def args_handler(args):
     if check:
         print(json.dumps(check_user))
 
