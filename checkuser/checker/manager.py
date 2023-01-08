@@ -26,7 +26,7 @@ class CheckerUserManager:
             if not output or output == 'never':
                 return None
 
-            return datetime.strptime(output, '%b %d, %Y').strftime('%d/%m/%Y')
+            return datetime.strptime(output, '%b %d, %Y').strftime('%Y/%m/%d/')
 
         except subprocess.CalledProcessError as e:
             return None
@@ -35,7 +35,7 @@ class CheckerUserManager:
         if not isinstance(date, str) or date.lower() == 'never':
             return -1
 
-        return (datetime.strptime(date, '%d/%m/%Y') - datetime.now()).days
+        return (datetime.strptime(date, '%Y/%m/%d/') - datetime.now()).days
 
     def get_connections(self) -> int:
         count = 0
@@ -78,7 +78,7 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
         expiration_days = checker.get_expiration_days(expiration_date)
         limit_connection = checker.get_limiter_connection()
         time_online = checker.get_time_online()
-        gtxs = '2023-02-12-'
+        gtxs = expiration_date.replace("/", "-")
         return {
             'USER_ID':username,
             'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
