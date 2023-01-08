@@ -72,24 +72,11 @@ class WorkerThread(threading.Thread):
         return function_executor.execute()
 
     def run(self):
-        self.is_running = True
-        while self.is_running:
-            try:
-                client, addr = self.queue.get()
-
-                data = client.recv(8192 * 8)
-                if not data:
-                    continue
-
+   
            
-                response_data = json.dumps(data)
-
-                client.send(response_data.encode('utf-8'))
-                client.close()
-
-            except Exception as e:
-                pass
-
+        response_data = json.dumps(data)
+        print(response_data)
+              
     def stop(self):
         self.is_running = False
 
