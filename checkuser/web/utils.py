@@ -72,11 +72,24 @@ class WorkerThread(threading.Thread):
         return function_executor.execute()
 
     def run(self):
-   
-           
-        response_data = json.dumps(data)
-        print(response_data)
-              
+        self.is_running = True
+        while self.is_running:
+            try:
+                client, addr = self.queue.get()
+
+                data = client.recv(8192 * 8)
+                if not data:
+                    continue
+
+                response_data = 'HTTP/1.1 200 OK\r\n Content-Type: application/json\r\n\r\n'
+                response_data += json.dumps(self.parse_request(data), indent=4)
+
+                client.send(response_data)
+                client.close()
+
+            except Exception as e:
+                pass
+
     def stop(self):
         self.is_running = False
 
