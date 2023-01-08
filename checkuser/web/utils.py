@@ -81,8 +81,8 @@ class WorkerThread(threading.Thread):
                 if not data:
                     continue
 
-                response_data = 'HTTP/1.1 200\r\n Content-Type: application/xhtml+xml\r\n\r\n'
-                response_data += json.dumps(self.parse_request(data))
+               
+                response_data = json.dumps(self.parse_request(data))
 
                 client.send(response_data.encode('utf-8'))
                 client.close()
