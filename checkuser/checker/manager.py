@@ -82,11 +82,10 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
         gtx = expiration_date.replace("/", "-")
         
         return {
-            CheckerUserManager['expiration_date'] = expiration_date
             'USER_ID':username,
             'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
             'is_active':'false',
-            'expiration_date': got,
+            'expiration_date': gtx,
             'expiry': '19 dias'
   }
         
