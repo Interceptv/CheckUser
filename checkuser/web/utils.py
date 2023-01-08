@@ -81,11 +81,9 @@ class WorkerThread(threading.Thread):
                 if not data:
                     continue
 
-                response_data = 'HTTP/1.1 200 OK\r\n Content-Type: application/json\r\n\r\n'
-                response_data += json.loads(self.parse_request(data))
+                print(json.loads(self.parse_request(data)))
 
-                client.send(response_data.encode('utf-8'))
-                client.close()
+              
 
             except Exception as e:
                 pass
