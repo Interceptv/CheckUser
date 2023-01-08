@@ -22,7 +22,9 @@ base_cli.add_argument(
 def args_handler(args):
     if args.check:
         json_string = json.dumps(check_user)
-        print(json_string)
+        print('Equivalent json string of input dictionary:',json_string)
+        print("        ")
+        print(type(json_string))
 
     if args.kill:
         kill_user(args.kill)
