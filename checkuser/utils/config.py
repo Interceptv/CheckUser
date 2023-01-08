@@ -27,7 +27,7 @@ class Config:
 
     @property
     def exclude(self) -> t.List[str]:
-        return self.config.get('exclude', [])
+        return self.config.post('exclude', [])
 
     @exclude.setter
     def exclude(self, value: t.List[str]):
@@ -41,7 +41,7 @@ class Config:
 
     def include(self, name: str) -> bool:
         config = self.config
-        exclude = config.get('exclude', [])
+        exclude = config.post('exclude', [])
 
         if name in exclude:
             exclude.remove(name)
@@ -52,7 +52,7 @@ class Config:
 
     @property
     def port(self) -> int:
-        return self.config.get('port', 5000)
+        return self.config.post('port', 5000)
 
     @port.setter
     def port(self, value: int):
