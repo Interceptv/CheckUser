@@ -15,18 +15,18 @@ class CheckerUserManager:
 
     def get_expiration_date(self) -> t.Optional[str]:
         try:
-           
- chage = subprocess.Popen(
+            chage = subprocess.Popen(
                 ('chage', '-l', self.username), stdout=subprocess.PIPE)
             grep = subprocess.Popen(
                 ('grep', 'Account expires'), stdin=chage.stdout, stdout=subprocess.PIPE)
             cut = subprocess.Popen(
                 'cut -d : -f2'.split(), stdin=grep.stdout, stdout=subprocess.PIPE)
             output = cut.communicate()[0].strip().decode()
+
             if not output or output == 'never':
                 return None
 
-            return datetime.strptime(output, '%b %d, %Y').strftime("%Y-%m-%d-")
+            return datetime.strptime(output, '%b %d, %Y').strftime('%d/%m/%Y')
 
         except subprocess.CalledProcessError as e:
             return None
@@ -35,7 +35,7 @@ class CheckerUserManager:
         if not isinstance(date, str) or date.lower() == 'never':
             return -1
 
-        return (datetime.strptime(date, '%Y-%m-%d-') - datetime.now()).days
+        return (datetime.strptime(date, '%d/%m/%Y') - datetime.now()).days
 
     def get_connections(self) -> int:
         count = 0
@@ -73,9 +73,12 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
     try:
         checker = CheckerUserManager(username)
 
+        count = checker.get_connections()
         expiration_date = checker.get_expiration_date()
         expiration_days = checker.get_expiration_days(expiration_date)
-       
+        limit_connection = checker.get_limiter_connection()
+        time_online = checker.get_time_online()
+
         return {
             'USER_ID':username,
             'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
@@ -83,7 +86,7 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
             'expiration_date': expiration_date,
             'expiry': '19 dias'
   }
-      
+        
 
     except Exception as e:
         return {'error': str(e)}
