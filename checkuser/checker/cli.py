@@ -19,9 +19,9 @@ base_cli.add_argument(
 )
 
 
-def args_handler():
+def args_handler(args):
     if args.check:
-        print(json.dumps(check_user))
+        print(json.dump(check_user))
 
     if args.kill:
         kill_user(args.kill)
