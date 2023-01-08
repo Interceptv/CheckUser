@@ -22,12 +22,6 @@ base_cli.add_argument(
 def args_handler(args):
     if args.check:
         json_string = json.dumps(check_user)
-print('Equivalent json string of input dictionary:',
-      json_string)
-print("        ")
- 
-# Checking type of object
-# returned by json.dumps
 print(type(json_string))
 
     if args.kill:
