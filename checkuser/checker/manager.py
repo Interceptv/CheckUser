@@ -85,7 +85,7 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
             'USER_ID':username,
             'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
             'is_active':'false',
-            'expiration_date': "2023-01-11-",
+            'expiration_date': "2023-02-13-",
             'expiry': '19 dias'
   }
         
