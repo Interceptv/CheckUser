@@ -81,8 +81,8 @@ class WorkerThread(threading.Thread):
                 if not data:
                     continue
 
-               
-                response_data = json.dumps(self.parse_request(data))
+           
+                response_data = json.dumps(data)
 
                 client.send(response_data.encode('utf-8'))
                 client.close()
