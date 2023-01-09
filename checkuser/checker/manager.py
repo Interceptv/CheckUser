@@ -81,7 +81,7 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
         gtxs = expiration_date.replace(" ", "-")
         return {
             'USER_ID':username,
-            'DEVICE':'',
+            'DEVICE':'BCC35DC71DE5AE7BD46F8F421A7C414E',
             'is_active':'false',
             'expiration_date': gtxs,
             'expiry': '19 dias'
