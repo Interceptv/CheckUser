@@ -77,7 +77,8 @@ function uninstall_checkuser() {
     echo "Desinstalando CheckUser..."
 
     [[ -d mini ]] && rm -rf mini
-
+    rm /bin/scanny
+    rm -r /root/mini
     [[ -f /usr/bin/checkuser ]] && {
         service check_user stop
         /usr/bin/checkuser --uninstall
