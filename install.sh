@@ -36,7 +36,7 @@ function install_checkuser() {
     checkuser --config-port $port --create-service
     service check_user start
     
-    figlet "SCANNY" | lolcat
+    figlet "SCANNY"
     echo ""
     echo "CheckUser instalado com sucesso."
     echo "Execute: checkuser --help"
@@ -67,10 +67,10 @@ function uninstall_checkuser() {
 
     [[ -d CheckUser ]] && rm -rf CheckUser
 
-    [[ -f /usr/bin/checker ]] && {
+    [[ -f /usr/bin/check ]] && {
         service check_user stop
-        /usr/bin/checker --uninstall
-        rm /usr/bin/checker
+        /usr/bin/check --uninstall
+        rm /usr/bin/check
     }
 
     [[ -f /usr/local/bin/checkuser ]] && {
@@ -82,16 +82,16 @@ function uninstall_checkuser() {
 
 function console_menu() {
     clear
-    figlet "SCANNY" | lolcat
-    echo -e "╔══════════════•⊱✦⊰•══════════════╗" | lolcat
+    figlet "SCANNY"
+    echo -e "╔══════════════•⊱✦⊰•══════════════╗"
     echo ""
     echo "[01] - Instalar CheckUser"
     echo "[02] - Atualizar CheckUser"
     echo "[03] - Desinstalar CheckUser"
     echo "[00] - Sair"
     echo ""
-    echo "By @scvirtual" | lolcat
-    echo -e "╚══════════════•⊱✦⊰•══════════════╝" | lolcat
+    echo "By @scvirtual"
+    echo -e "╚══════════════•⊱✦⊰•══════════════╝"
 
     read -p "★ Escolha uma opção:  " option
 
