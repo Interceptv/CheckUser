@@ -1,165 +1,30 @@
-url="https://github.com/Interceptv/mini"
-
-cd ~
-
-if ! [ -x "$(command -v git)" ]; then
-    echo "Erro: git nao esta instalado." >&2
-    echo "Instalando Git..."
-
-    sudo apt-get install git -y 1>/dev/null 2>/dev/null
-
-    echo "Git instalado com sucesso."
-
-    if ! [ -x "$(command -v git)" ]; then
-        echo "Erro: git nao esta instalado." >&2
-        exit 1
-    fi
-fi
-
-function reiniciar() {
-    if ! [ -d mini ]; then
-        echo "CheckUser nao esta instalado."
-        return 1
-    fi
-    
-    echo "Reiniciando serviços"
-    service check_user restart
-    echo "CheckUser reiniciado com sucesso."
-    read
-}
-function install_checkuser() {
-    echo "Instalando CheckUser..."
-
-    git clone $url
-    
-    
-    cd mini
-
-    python3 setup.py install
-
-    if ! [ -x "$(command -v checkuser)" ]; then
-        echo "Erro: CheckUser nao esta instalado." >&2
-        exit 1
-    fi
-
-    clear
-    read -p "Porta: " -e -i 5000 port
-    checkuser --config-port $port --create-service
-    service check_user start
-    
-    figlet "SCANNY"
-    echo ""
-    echo "CheckUser instalado com sucesso."
-    echo "Execute: checkuser --help"
-    echo "URL: http://"$(curl -s icanhazip.com)":"$port"/check/"
-    read
-}
-
-function check_update() {
-    if ! [ -d mini ]; then
-        echo "CheckUser nao esta instalado."
-        return 1
-    fi
-
-    echo "Verificando atualizacoes..."
-    cd mini
-
-    git fetch --all
-    git reset --hard origin/master
-    git pull origin master
-
-    python3 setup.py install
-    echo "CheckUser atualizado com sucesso."
-    read
-}
-
-function uninstall_checkuser() {
-    echo "Desinstalando CheckUser..."
-
-    [[ -d mini ]] && rm -rf mini
-
-    [[ -f /usr/bin/checkuser ]] && {
-        service check_user stop
-        /usr/bin/checkuser --uninstall
-        rm /usr/bin/checkuser
-    }
-
-    [[ -f /usr/local/bin/checkuser ]] && {
-        service check_user stop
-        /usr/local/bin/checkuser --remove-service
-        rm /usr/local/bin/checkuser
-    }
-}
-
-function console_menu() {
-    clear
-    figlet "SCANNY"
-    echo -e "╔══════════════•⊱✦⊰•══════════════╗"
-    echo ""
-    echo "[01] - Instalar CheckUser"
-    echo "[02] - Atualizar CheckUser"
-    echo "[03] - Reiniciar CheckUser"
-    echo "[04] - Desinstalar CheckUser"
-    echo "[00] - Sair"
-    echo ""
-    echo "By @scvirtual"
-    echo -e "╚══════════════•⊱✦⊰•══════════════╝"
-
-    read -p "★ Escolha uma opção:  " option
-
-    case $option in
-    01 | 1)
-        install_checkuser
-        console_menu
-        ;;
-    02 | 2)
-        check_update
-        console_menu
-        ;;
-    03 | 3)
-        reiniciar
-        console_menu
-        ;;
-        04 | 4)
-        uninstall_checkuser
-        console_menu
-        ;;
-    00 | 0)
-        echo "Saindo..."
-        exit 0
-        ;;
-    *)
-        echo "Opção inválida."
-        read -p "Pressione enter para continuar..."
-        console_menu
-        ;;
-    esac
-
-}
-
-function main() {
-    case $1 in
-    install)
-        install_checkuser
-        ;;
-    update)
-        check_update
-        ;;
-     reinstall)
-        reiniciar
-        ;;
-    uninstall)
-        uninstall_checkuser
-        ;;
-    *)
-        echo "Usage: ./install.sh [install|update|reinstall|uninstall]"
-        exit 1
-        ;;
-    esac
-}
-
-if [[ $# -eq 0 ]]; then
-    console_menu
-else
-    main $1
-fi
+#!/bin/bash
+clear
+echo "America/Sao_Paulo" > /etc/timezone
+ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime > /dev/null 2>&1
+dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1
+clear
+echo -e "\E[44;1;37m    INSTALAR CHECKUSER SCANNY     \E[0m" 
+echo ""
+echo -e "                 \033[1;31mBy @scvirtual\033[1;36m"
+echo ""
+echo -ne "\n\033[1;32mDE UM ENTER PARA \033[1;33mCONTINUAR...\033[1;37m: "; read -r
+clear
+echo -e "\n\033[1;36mINICIANDO INSTALAÇÃO \033[1;33mAGUARDE..."
+apt-get install figlet -y > /dev/null 2>&1
+pip3 install flask > /dev/null 2>&1
+rm /bin/scanny > /dev/null 2>&1
+sleep 5
+cd /bin || exit
+wget https://github.com/Interceptv/mini/raw/main/scanny > /dev/null 2>&1
+chmod 777 scanny > /dev/null 2>&1
+clear
+echo -e "        \033[1;33m • \033[1;32mINSTALAÇÃO CONCLUÍDA\033[1;33m • \033[0m"
+sleep 2
+clear
+echo ""
+echo -e "\033[1;31m \033[1;33mCOMANDO PRINCIPAL: \033[1;32mscanny\033[0m"
+echo ""
+echo -e "\033[1;33m MAIS INFORMAÇÕES \033[1;31m(\033[1;36mTELEGRAM\033[1;31m): \033[1;37m@scvirtual\033[0m"
+cat /dev/null > ~/.bash_history && history -c
+exit
