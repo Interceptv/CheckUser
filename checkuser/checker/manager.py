@@ -99,14 +99,12 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
         time_online = checker.get_time_online()
         gtxs = expiration_date.replace(" ", "-")
         return {
-            'USER_ID':username,
-            'DEVICE':'SCANNY',
-            'is_active':'false',
-            'is_limit':limit_connection,
-            'is_onlines':time_online,
-            'is_count':count,
+            'username':username,
+            'count_connection':count,
             'expiration_date': gtxs,
-            'expiry': '21 dias'
+            'expiration_days': '21 dias',
+            'limiter_user':limit_connection,
+            'uuid':uuid2
   }
         
 
