@@ -98,7 +98,8 @@ function console_menu() {
     echo ""
     echo "[01] - Instalar CheckUser"
     echo "[02] - Atualizar CheckUser"
-    echo "[03] - Desinstalar CheckUser"
+    echo "[03] - Reiniciar CheckUser"
+    echo "[04] - Desinstalar CheckUser"
     echo "[00] - Sair"
     echo ""
     echo "By @scvirtual"
@@ -116,6 +117,10 @@ function console_menu() {
         console_menu
         ;;
     03 | 3)
+        reiniciar
+        console_menu
+        ;;
+        04 | 4)
         uninstall_checkuser
         console_menu
         ;;
@@ -139,6 +144,9 @@ function main() {
         ;;
     update)
         check_update
+        ;;
+     reinstall)
+        reiniciar
         ;;
     uninstall)
         uninstall_checkuser
