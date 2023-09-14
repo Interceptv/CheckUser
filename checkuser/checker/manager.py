@@ -1,5 +1,8 @@
 import typing as t
 import os
+import sys
+import typing as t
+import json
 import subprocess
 
 from datetime import datetime
@@ -68,6 +71,22 @@ class CheckerUserManager:
         self.ssh_manager.kill_connection(self.username)
         self.openvpn_manager.kill_connection(self.username)
 
+   
+diretorio = '/etc/v2ray/config.json'  # Substitua pelo caminho correto do arquivo JSON
+
+# Verifique se o arquivo JSON existe
+if os.path.exists(diretorio):
+    with open(diretorio, 'r') as arquivo_config:
+        config = json.load(arquivo_config)
+
+    # Acesse o UUID no arquivo de configuração
+    try:
+        uuid = config.get('inbounds')[0].get('settings').get('clients')[0].get('id')
+        uuid2=(f"{uuid}")
+    except (KeyError, IndexError):
+        uuid2=("null")
+else:
+    uuid2=("null")
 
 def check_user(username: str) -> t.Dict[str, t.Any]:
     try:
