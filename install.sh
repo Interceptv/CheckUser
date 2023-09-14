@@ -16,6 +16,17 @@ if ! [ -x "$(command -v git)" ]; then
     fi
 fi
 
+function reiniciar() {
+    if ! [ -d mini ]; then
+        echo "CheckUser nao esta instalado."
+        return 1
+    fi
+    
+    echo "Reiniciando serviços"
+    service check_user restart
+    echo "CheckUser reiniciado com sucesso."
+    read
+}
 function install_checkuser() {
     echo "Instalando CheckUser..."
 
