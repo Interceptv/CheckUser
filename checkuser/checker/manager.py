@@ -83,6 +83,9 @@ def check_user(username: str) -> t.Dict[str, t.Any]:
             'USER_ID':username,
             'DEVICE':'SCANNY',
             'is_active':'false',
+            'is_limit':limit_connection,
+            'is_onlines':time_online,
+            'is_count':count,
             'expiration_date': gtxs,
             'expiry': '19 dias'
   }
