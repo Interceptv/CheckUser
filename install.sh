@@ -67,10 +67,10 @@ function uninstall_checkuser() {
 
     [[ -d CheckUser ]] && rm -rf CheckUser
 
-    [[ -f /usr/bin/check ]] && {
+    [[ -f /usr/bin/checkcheckuser ]] && {
         service check_user stop
-        /usr/bin/check --uninstall
-        rm /usr/bin/check
+        /usr/bin/checkuser --uninstall
+        rm /usr/bin/checkuser
     }
 
     [[ -f /usr/local/bin/checkuser ]] && {
