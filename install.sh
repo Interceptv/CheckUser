@@ -22,7 +22,7 @@ function install_checkuser() {
     git clone $url
     
     
-    cd CheckUser
+    cd mini
 
     python3 setup.py install
 
@@ -45,13 +45,13 @@ function install_checkuser() {
 }
 
 function check_update() {
-    if ! [ -d CheckUser ]; then
+    if ! [ -d mini ]; then
         echo "CheckUser nao esta instalado."
         return 1
     fi
 
     echo "Verificando atualizacoes..."
-    cd CheckUser
+    cd mini
 
     git fetch --all
     git reset --hard origin/master
@@ -65,7 +65,7 @@ function check_update() {
 function uninstall_checkuser() {
     echo "Desinstalando CheckUser..."
 
-    [[ -d CheckUser ]] && rm -rf CheckUser
+    [[ -d mini ]] && rm -rf mini
 
     [[ -f /usr/bin/checkuser ]] && {
         service check_user stop
