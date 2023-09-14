@@ -152,7 +152,7 @@ function main() {
         uninstall_checkuser
         ;;
     *)
-        echo "Usage: ./install.sh [install|update|uninstall]"
+        echo "Usage: ./install.sh [install|update|reinstall|uninstall]"
         exit 1
         ;;
     esac
