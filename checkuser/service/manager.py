@@ -1,7 +1,7 @@
 import os
 import sys
 
-from checkuser.utils import logger
+from scannycheck.utils import logger
 
 
 class ServiceManager:
