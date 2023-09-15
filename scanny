@@ -79,6 +79,7 @@ function uninstall_checkuser() {
     [[ -d mini ]] && rm -rf mini
     [[ -f /usr/bin/scannycheck ]] && {
         service check_user stop
+        rm -r /root/mini/
         /usr/bin/scannycheck --uninstall
         rm /usr/bin/scannycheck
     }
