@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from checkuser import __version__, __author__, __email__
+from scannycheck import __version__, __author__, __email__
 
 PACKAGES = find_packages()
 REQUIREMENTS = open('requirements.txt').read().splitlines()
