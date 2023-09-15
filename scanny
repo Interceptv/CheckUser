@@ -89,10 +89,11 @@ function uninstall_checkuser() {
         /usr/local/bin/checkuser --remove-service
         rm /usr/local/bin/checkuser
 
+
+    }
 echo "Checkuser Apagado com sucesso!"
 sleep 5
         exit 0
-    }
 }
 
 function console_menu() {
