@@ -1,12 +1,12 @@
-from checkuser.checker import check_user, kill_user
-from checkuser.checker import CheckerUserManager
+from scannycheck.checker import check_user, kill_user
+from scannycheck.checker import CheckerUserManager
 
-from checkuser.checker.ovpn import OpenVPNManager
-from checkuser.checker.ssh import SSHManager
+from scannycheck.checker.ovpn import OpenVPNManager
+from scannycheck.checker.ssh import SSHManager
 
-from checkuser.web import Server, ServerManager
+from scannycheck.web import Server, ServerManager
 
-from checkuser.utils import base_cli
+from scannycheck.utils import base_cli
 
 __version__ = '2.1.6'
 __author__ = 'Glemison C. Dutra'
