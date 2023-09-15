@@ -88,11 +88,11 @@ function uninstall_checkuser() {
         service check_user stop
         /usr/local/bin/checkuser --remove-service
         rm /usr/local/bin/checkuser
-        clear
-        exit 1
+      
 
     }
-
+  clear
+        exit 1
 }
 
 function console_menu() {
