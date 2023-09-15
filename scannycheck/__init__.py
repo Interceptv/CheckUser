@@ -9,8 +9,8 @@ from scannycheck.web import Server, ServerManager
 from scannycheck.utils import base_cli
 
 __version__ = '2.1.6'
-__author__ = 'Glemison C. Dutra'
-__email__ = 'glemyson20@gmail.com'
+__author__ = 'security virtual'
+__email__ = 'templodefogoc@gmail.com'
 
 base_cli.description = 'Checker for OpenVPN and SSH'
 base_cli.prog = 'checker v' + __version__
