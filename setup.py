@@ -23,6 +23,6 @@ setup(name='CheckerUser',
       install_requires=REQUIREMENTS,
       entry_points={
           'console_scripts': [
-              'scannycheck = checkuser.__main__:main',
+              'scannycheck = scannycheck.__main__:main',
           ],
       })
