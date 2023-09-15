@@ -37,20 +37,20 @@ function install_checkuser() {
 
     python3 setup.py install
 
-    if ! [ -x "$(command -v checkuser)" ]; then
+    if ! [ -x "$(command -v scannycheck)" ]; then
         echo "Erro: CheckUser nao esta instalado." >&2
         exit 1
     fi
 
     clear
     read -p "Porta: " -e -i 5000 port
-    checkuser --config-port $port --create-service
+    scannycheck --config-port $port --create-service
     service check_user start
     
     figlet "SCANNY"
     echo ""
     echo "CheckUser instalado com sucesso."
-    echo "Execute: checkuser --help"
+    echo "Execute: scannycheck --help"
     echo "URL: http://"$(curl -s icanhazip.com)":"$port"/check/"
     read
 }
@@ -77,16 +77,16 @@ function uninstall_checkuser() {
     echo "Desinstalando CheckUser..."
 
     [[ -d mini ]] && rm -rf mini
-    [[ -f /usr/bin/checkuser ]] && {
+    [[ -f /usr/bin/scannycheck ]] && {
         service check_user stop
-        /usr/bin/checkuser --uninstall
-        rm /usr/bin/checkuser
+        /usr/bin/scannycheck --uninstall
+        rm /usr/bin/scannycheck
     }
 
-    [[ -f /usr/local/bin/checkuser ]] && {
+    [[ -f /usr/local/bin/scannycheck ]] && {
         service check_user stop
-        /usr/local/bin/checkuser --remove-service
-        rm /usr/local/bin/checkuser
+        /usr/local/bin/scannycheck --remove-service
+        rm /usr/local/bin/scannycheck
       
 
     }
