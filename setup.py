@@ -11,7 +11,7 @@ AUTHOR_EMAIL = __email__
 URL = 'https://github.com/Interceptv/mini'
 LICENSE = 'MIT'
 
-setup(name='CheckerUser',
+setup(name='ScannyCheck',
       version=VERSION,
       description=DESCRIPTION,
       author=AUTHOR,
