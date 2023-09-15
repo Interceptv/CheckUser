@@ -91,9 +91,7 @@ function uninstall_checkuser() {
 
 
     }
-echo "Checkuser Apagado com sucesso!"
-sleep 5
-        exit 0
+
 }
 
 function console_menu() {
