@@ -4,7 +4,7 @@ import socket
 import queue
 import threading
 
-from checkuser.utils import logger
+from scannycheck.utils import logger
 
 from ..checker import check_user, kill_user
 from ..utils.config import Config
