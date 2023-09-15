@@ -1,11 +1,11 @@
 import sys
 
-import checkuser.checker.cli as check_user_cli
-import checkuser.service.cli as service_cli
-import checkuser.web.cli as web_cli
+import scannycheck.checker.cli as check_user_cli
+import scannycheck.service.cli as service_cli
+import scannycheck.web.cli as web_cli
 
-from checkuser.utils.config import args_handler as config_args_handler
-from checkuser.utils import base_cli
+from scannycheck.utils.config import args_handler as config_args_handler
+from scannycheck.utils import base_cli
 
 
 def args_handler(args):
